@@ -3,8 +3,24 @@
 CernのROOTと呼ばれる解析ツールを用いたプログラムで、3次元ヒストグラムを生成し、2次元ガウス関数をfittingするプログラムである。
 
 ## nuclide_fit.cc
-fittingして得られた結果をfitting_results.csvに出力する。さらにfitting結果から二次元ガウス関数を積分して、積分した値をcountsとしてfitting_results.csvに出力している。
-それぞれの粒子に合ったパラメータやヒストグラム生成範囲を決めることで、下の例のような3次元ヒストグラムと2次元ガウス関数のfittingが描画できる。
+3次元ヒストグラムを生成し、2次元ガウス関数をfittingする。そしてfittingして得られた結果をfitting_results.csvに出力する。さらにfitting結果から二次元ガウス関数を積分して、積分した値をcountsとしてfitting_results.csvに出力している。
+```
+Double_t func2d(Double_t *val, Double_t *par) {
+  Double_t *p1 = &par[0];
+  Double_t result = gaus2d(val, p1);
+
+  return result;
+}
+```
+において、
+```
+  Double_t *p1 = &par[0];
+  Double_t *p2 = &par[5];
+  Double_t result = gaus2d(val, p1) + gasu2d;
+```
+とすると二つの二次元ガウス関数によるfittingが行える。その際に npar = 10 として f2d->SetParameter を 0 ~ 9 の合計10個のパラメータを決める必要がある。
+
+それぞれの粒子に合ったパラメータやヒストグラム生成範囲を決めることで、下の例のような3次元ヒストグラムと4つの2次元ガウス関数によるfittingが描画できる。
 <p align="center">
 <img width="350" alt="image" src="https://github.com/cfukush/cross_section/assets/132242322/ed022b0b-e52f-483e-853a-2217f73e41d2">
 </p>
