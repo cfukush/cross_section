@@ -4,7 +4,7 @@ CernのROOTと呼ばれる解析ツールを用いたプログラムで、3次�
 
 ## nuclide_fit.cc
 3次元ヒストグラムを生成し、2次元ガウス関数をfittingする。そしてfittingして得られた結果をfitting_results.csvに出力する。さらにfitting結果から二次元ガウス関数を積分して、積分した値をcountsとしてfitting_results.csvに出力している。
-```
+```C++
 Double_t func2d(Double_t *val, Double_t *par) {
   Double_t *p1 = &par[0];
   Double_t result = gaus2d(val, p1);
@@ -13,10 +13,10 @@ Double_t func2d(Double_t *val, Double_t *par) {
 }
 ```
 において、
-```
+```C++
   Double_t *p1 = &par[0];
   Double_t *p2 = &par[5];
-  Double_t result = gaus2d(val, p1) + gasu2d;
+  Double_t result = gaus2d(val, p1) + gasu2d(val, p2);
 ```
 とすると二つの二次元ガウス関数によるfittingが行える。その際に npar = 10 として f2d->SetParameter を 0 ~ 9 の合計10個のパラメータを決める必要がある。
 
