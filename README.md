@@ -5,7 +5,7 @@ CernのROOTと呼ばれる解析ツールを用いたプログラムで、3次�
 ## nuclide_fit.cc
 fittingして得られた結果をfitting_results.csvに出力する。さらにfitting結果から二次元ガウス関数を積分して、積分した値をcountsとしてfitting_results.csvに出力している。
 それぞれの粒子に合ったパラメータやヒストグラム生成範囲を決めることで、下の例のような3次元ヒストグラムと2次元ガウス関数のfittingが描画できる。
-<img width="609" alt="image" src="https://github.com/cfukush/cross_section/assets/132242322/ed022b0b-e52f-483e-853a-2217f73e41d2">
+<img width="400" alt="image" src="https://github.com/cfukush/cross_section/assets/132242322/ed022b0b-e52f-483e-853a-2217f73e41d2">
 
 
 ## cross_section.py
