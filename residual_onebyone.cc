@@ -13,7 +13,7 @@ Double_t gaus2d(Double_t *val, Double_t *par) {
 
 Double_t func2d(Double_t *val, Double_t *par) {
   Double_t *p1 = &par[0];
-  Double_t result = gaus2d(val, p1); // + gaus2d(val,p2) + gaus2d(val,p3);
+  Double_t result = gaus2d(val, p1);
 
   return result;
 }
@@ -95,7 +95,7 @@ void makehist() {
       "colz");
 
   auto c2 = new TCanvas("c2");
-  auto h2 = new TH2F("h2", "238Np", bin, r1, r2, bin, r3, r4);
+  auto h2 = new TH2F("h2", "3D hist", bin, r1, r2, bin, r3, r4);
 
   tree->Draw(
       Form("y:x >> h2(%f, %f, %f, %f, %f, %f)", bin, r1, r2, bin, r3, r4), "",
